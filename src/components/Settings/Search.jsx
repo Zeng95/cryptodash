@@ -1,20 +1,20 @@
-import { SettingsContext } from 'context/SettingsContext'
-import { ThemeContext } from 'context/ThemeContext'
-import fuzzy from 'fuzzy'
-import _ from 'lodash'
-import React, { Component } from 'react'
-import { withTranslation } from 'react-i18next'
-import styled, { css } from 'styled-components'
-import { fontSize2 } from '../Shared/Styles'
+import { SettingsContext } from 'context/SettingsContext';
+import { ThemeContext } from 'context/ThemeContext';
+import fuzzy from 'fuzzy';
+import _ from 'lodash';
+import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
+import styled, { css } from 'styled-components';
+import { fontSize2 } from '../Shared/Styles';
 
 const SearchGrid = styled.div`
   column-gap: 20px;
   display: grid;
   grid-template-columns: auto 1fr;
-`
+`;
 const SearchTitle = styled.h2`
   margin: 0;
-`
+`;
 const SearchInput = styled.input`
   ${fontSize2}
   border: 1px solid;
@@ -25,55 +25,55 @@ const SearchInput = styled.input`
     css`
       ${theme.darkBlueBackground}
     `}
-`
+`;
 
 class Search extends Component {
   // Delay invoking function until after 1s
   handleFilterCoins = _.debounce((inputValue, coins, setFilteredCoins) => {
     // Get all the coin symbols
-    const coinSymbols = Object.keys(coins)
+    const coinSymbols = Object.keys(coins);
     // Get all the coin names, map symbol to name
-    const coinNames = coinSymbols.map(key => coins[key].CoinName)
+    const coinNames = coinSymbols.map(key => coins[key].CoinName);
     // Combine a list of the coin symbols and the coin names together
-    const allStringsToSearch = coinSymbols.concat(coinNames)
+    const allStringsToSearch = coinSymbols.concat(coinNames);
     // A list of the results that has come back from the search
     const fuzzyResults = fuzzy
       .filter(inputValue, allStringsToSearch, {})
-      .map(result => result.string)
+      .map(result => result.string);
 
-    let results = {}
+    let results = {};
     // Deduplicate(去除重复) the fuzzy results, reutrn an array
     Object.entries(coins).forEach(item => {
-      const symbol = item[0]
-      const coin = item[1]
-      const name = coin.CoinName
+      const symbol = item[0];
+      const coin = item[1];
+      const name = coin.CoinName;
 
       if (fuzzyResults.includes(symbol) || fuzzyResults.includes(name)) {
-        results[symbol] = coin
+        results[symbol] = coin;
       }
-    })
-    setFilteredCoins(results)
+    });
+    setFilteredCoins(results);
 
     // An easier way || 更简单的方法
     // const filteredCoins = _.pickBy(coins, (coin, symbolKey) => {
     //   const coinName = coin.CoinName
     //   return fuzzyResults.includes(symbolKey) || fuzzyResults.includes(coinName)
     // })
-  }, 1500)
+  }, 1500);
 
   handleKeyUp(event, coins, setFilteredCoins) {
-    const inputValue = event.target.value
+    const inputValue = event.target.value;
 
     if (!inputValue) {
-      setFilteredCoins(null)
-      return false
+      setFilteredCoins(null);
+      return false;
     }
 
-    this.handleFilterCoins(inputValue, coins, setFilteredCoins)
+    this.handleFilterCoins(inputValue, coins, setFilteredCoins);
   }
 
   render() {
-    const { t } = this.props
+    const { t } = this.props;
 
     return (
       <SettingsContext.Consumer>
@@ -93,8 +93,8 @@ class Search extends Component {
           </ThemeContext.Consumer>
         )}
       </SettingsContext.Consumer>
-    )
+    );
   }
 }
 
-export default withTranslation()(Search)
+export default withTranslation()(Search);

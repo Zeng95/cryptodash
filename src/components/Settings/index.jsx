@@ -1,14 +1,14 @@
-import Page from '../Shared/Page'
-import React, { Component } from 'react'
-import CoinGrid from './CoinGrid'
-import ConfirmButton from './ConfirmButton'
-import Search from './Search'
-import WelcomeMessage from './WelcomeMessage'
-import { withTranslation } from 'react-i18next'
+import Page from '../Shared/Page';
+import React, { Component } from 'react';
+import CoinGrid from './CoinGrid';
+import ConfirmButton from './ConfirmButton';
+import Search from './Search';
+import WelcomeMessage from './WelcomeMessage';
+import { withTranslation } from 'react-i18next';
 
 class Settings extends Component {
   render() {
-    const { t } = this.props
+    const { t } = this.props;
 
     return (
       <Page name={t('navbar.settings')}>
@@ -18,8 +18,8 @@ class Settings extends Component {
         <Search />
         <CoinGrid topSection={false} />
       </Page>
-    )
+    );
   }
 }
 
-export default withTranslation()(Settings)
+export default withTranslation()(Settings);

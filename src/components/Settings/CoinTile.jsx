@@ -1,16 +1,16 @@
-import { DeletableTile, DisabledTile, SelectableTile } from '../Shared/Tile'
-import { SettingsContext } from 'context/SettingsContext'
-import { ThemeContext } from 'context/ThemeContext'
-import React, { Component } from 'react'
-import CoinTileHeaderGrid from './CoinTileHeaderGrid'
-import CoinTileImage from './CoinTileImage'
+import { DeletableTile, DisabledTile, SelectableTile } from '../Shared/Tile';
+import { SettingsContext } from 'context/SettingsContext';
+import { ThemeContext } from 'context/ThemeContext';
+import React, { Component } from 'react';
+import CoinTileHeaderGrid from './CoinTileHeaderGrid';
+import CoinTileImage from './CoinTileImage';
 
 class CoinTile extends Component {
   handleClick = (addCoin, removeCoin) => {
-    const { coin, topSection } = this.props
+    const { coin, topSection } = this.props;
 
-    topSection ? removeCoin(coin.Name) : addCoin(coin.Name)
-  }
+    topSection ? removeCoin(coin.Name) : addCoin(coin.Name);
+  };
 
   render() {
     return (
@@ -18,17 +18,17 @@ class CoinTile extends Component {
         {value => (
           <ThemeContext.Consumer>
             {({ theme }) => {
-              const { addCoin, removeCoin, isInFavoriteCoins } = value
-              const { coin, topSection } = this.props
+              const { addCoin, removeCoin, isInFavoriteCoins } = value;
+              const { coin, topSection } = this.props;
 
-              let CoinTileClass
+              let CoinTileClass;
 
               if (topSection) {
-                CoinTileClass = DeletableTile
+                CoinTileClass = DeletableTile;
               } else if (isInFavoriteCoins(coin.Name)) {
-                CoinTileClass = DisabledTile
+                CoinTileClass = DisabledTile;
               } else {
-                CoinTileClass = SelectableTile
+                CoinTileClass = SelectableTile;
               }
 
               return (
@@ -39,13 +39,13 @@ class CoinTile extends Component {
                   <CoinTileHeaderGrid coin={coin} topSection={topSection} />
                   <CoinTileImage coin={coin} />
                 </CoinTileClass>
-              )
+              );
             }}
           </ThemeContext.Consumer>
         )}
       </SettingsContext.Consumer>
-    )
+    );
   }
 }
 
-export default CoinTile
+export default CoinTile;

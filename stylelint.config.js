@@ -4,4 +4,4 @@ module.exports = {
   rules: {
     'color-named': 'always-where-possible'
   }
-}
+};

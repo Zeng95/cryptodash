@@ -1,16 +1,16 @@
-import { AppContext } from 'context/AppContext'
-import { SettingsContext } from 'context/SettingsContext'
-import { ThemeContext } from 'context/ThemeContext'
-import _ from 'lodash'
-import React, { Component } from 'react'
-import styled, { css } from 'styled-components'
-import { formatNumber } from 'utils'
+import { AppContext } from 'context/AppContext';
+import { SettingsContext } from 'context/SettingsContext';
+import { ThemeContext } from 'context/ThemeContext';
+import _ from 'lodash';
+import React, { Component } from 'react';
+import styled, { css } from 'styled-components';
+import { formatNumber } from 'utils';
 import {
   CoinSymbol,
   CoinTileHeaderGridStyled
-} from '../Settings/CoinTileHeaderGrid'
-import { fontSize3, fontSizeBig, greenBoxShadow } from '../Shared/Styles.jsx'
-import { SelectableTile } from '../Shared/Tile'
+} from '../Settings/CoinTileHeaderGrid';
+import { fontSize3, fontSizeBig, greenBoxShadow } from '../Shared/Styles.jsx';
+import { SelectableTile } from '../Shared/Tile';
 
 // pointer-events is going to disbale on the current favorite coin
 const PriceTileStyled = styled(SelectableTile)`
@@ -30,10 +30,10 @@ const PriceTileStyled = styled(SelectableTile)`
       pointer-events: none;
       ${greenBoxShadow}
     `}
-`
+`;
 const JustifyLeft = styled.span`
   justify-self: left;
-`
+`;
 const ChangePercent = styled(CoinSymbol)`
   color: green;
 
@@ -42,23 +42,23 @@ const ChangePercent = styled(CoinSymbol)`
     css`
       color: red;
     `}
-`
+`;
 const TickerPrice = styled.div`
   ${fontSizeBig}
-`
+`;
 
 class PriceTile extends Component {
   handleClick(symbol, setCurrentFavorite, fetchHistorical) {
-    setCurrentFavorite(symbol)
+    setCurrentFavorite(symbol);
 
     // 使用 debounce 防止用户在短时间内频繁点击触发请求
     _.debounce(() => {
-      const { currentFavCoin } = JSON.parse(localStorage.getItem('cryptoDash'))
+      const { currentFavCoin } = JSON.parse(localStorage.getItem('cryptoDash'));
 
       if (currentFavCoin === symbol) {
-        fetchHistorical(symbol)
+        fetchHistorical(symbol);
       }
-    }, 1500)()
+    }, 1500)();
   }
 
   render() {
@@ -69,7 +69,7 @@ class PriceTile extends Component {
       setCurrentFavorite,
       fetchHistorical,
       theme
-    } = this.props
+    } = this.props;
 
     return (
       <PriceTileStyled
@@ -89,22 +89,22 @@ class PriceTile extends Component {
 
         <TickerPrice>{formatNumber(data.PRICE)}</TickerPrice>
       </PriceTileStyled>
-    )
+    );
   }
 }
 
 class PriceTileCompact extends Component {
   handleClick(symbol, setCurrentFavorite, fetchHistorical) {
-    setCurrentFavorite(symbol)
+    setCurrentFavorite(symbol);
 
     // 使用 debounce 防止用户在短时间内频繁点击触发请求
     _.debounce(() => {
-      const { currentFavCoin } = JSON.parse(localStorage.getItem('cryptoDash'))
+      const { currentFavCoin } = JSON.parse(localStorage.getItem('cryptoDash'));
 
       if (currentFavCoin === symbol) {
-        fetchHistorical(symbol)
+        fetchHistorical(symbol);
       }
-    }, 1500)()
+    }, 1500)();
   }
 
   render() {
@@ -115,7 +115,7 @@ class PriceTileCompact extends Component {
       setCurrentFavorite,
       fetchHistorical,
       theme
-    } = this.props
+    } = this.props;
 
     return (
       <PriceTileStyled
@@ -134,7 +134,7 @@ class PriceTileCompact extends Component {
 
         <div>{formatNumber(data.PRICE)}</div>
       </PriceTileStyled>
-    )
+    );
   }
 }
 
@@ -147,9 +147,9 @@ class TileClass extends Component {
             {({ currentFavCoin, setCurrentFavorite }) => (
               <ThemeContext.Consumer>
                 {({ theme }) => {
-                  const { price, index } = this.props
-                  const symbol = Object.keys(price)[0]
-                  const data = price[symbol].USD
+                  const { price, index } = this.props;
+                  const symbol = Object.keys(price)[0];
+                  const data = price[symbol].USD;
 
                   return index >= 5 ? (
                     <PriceTileCompact
@@ -169,15 +169,15 @@ class TileClass extends Component {
                       fetchHistorical={fetchHistorical}
                       theme={theme}
                     />
-                  )
+                  );
                 }}
               </ThemeContext.Consumer>
             )}
           </SettingsContext.Consumer>
         )}
       </AppContext.Consumer>
-    )
+    );
   }
 }
 
-export default TileClass
+export default TileClass;

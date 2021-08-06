@@ -1,5 +1,5 @@
-import { fontSize2 } from '../Shared/Styles'
-import styled, { css } from 'styled-components'
+import { fontSize2 } from '../Shared/Styles';
+import styled, { css } from 'styled-components';
 
 export default styled.select`
   ${fontSize2}
@@ -14,4 +14,4 @@ export default styled.select`
     css`
       ${theme.darkBlueBackground}
     `}
-`
+`;

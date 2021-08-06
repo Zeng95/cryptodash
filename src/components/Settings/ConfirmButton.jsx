@@ -1,15 +1,15 @@
-import { fontSize1, greenBoxShadow } from '../Shared/Styles'
-import { AppContext } from 'context/AppContext'
-import { SettingsContext } from 'context/SettingsContext'
-import { ThemeContext } from 'context/ThemeContext'
-import React, { Component } from 'react'
-import { withTranslation } from 'react-i18next'
-import styled, { css } from 'styled-components'
+import { fontSize1, greenBoxShadow } from '../Shared/Styles';
+import { AppContext } from 'context/AppContext';
+import { SettingsContext } from 'context/SettingsContext';
+import { ThemeContext } from 'context/ThemeContext';
+import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
+import styled, { css } from 'styled-components';
 
 const CenterDiv = styled.div`
   display: flex;
   justify-content: center;
-`
+`;
 const ConfirmButtonStyled = styled.button`
   background-color: transparent;
   border: 0;
@@ -30,11 +30,11 @@ const ConfirmButtonStyled = styled.button`
     css`
       color: ${theme.color3};
     `}
-`
+`;
 
 class ConfirmButton extends Component {
   render() {
-    const { t } = this.props
+    const { t } = this.props;
 
     return (
       <AppContext.Consumer>
@@ -57,8 +57,8 @@ class ConfirmButton extends Component {
           </SettingsContext.Consumer>
         )}
       </AppContext.Consumer>
-    )
+    );
   }
 }
 
-export default withTranslation()(ConfirmButton)
+export default withTranslation()(ConfirmButton);

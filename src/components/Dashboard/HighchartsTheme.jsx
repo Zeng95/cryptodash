@@ -251,4 +251,4 @@ export default {
     },
     trackBorderColor: '#666'
   }
-}
+};

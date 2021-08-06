@@ -1,12 +1,12 @@
-import { AppContextProvider } from 'context/AppContext'
-import { SettingsContextProvider } from 'context/SettingsContext'
-import { ThemeContext } from 'context/ThemeContext'
-import React, { Component } from 'react'
-import styled, { css } from 'styled-components'
-import Dashboard from '../Dashboard'
-import Settings from '../Settings'
-import Content from '../Shared/Content'
-import AppNavbar from './AppNavbar'
+import { AppContextProvider } from 'context/AppContext';
+import { SettingsContextProvider } from 'context/SettingsContext';
+import { ThemeContext } from 'context/ThemeContext';
+import React, { Component } from 'react';
+import styled, { css } from 'styled-components';
+import Dashboard from '../Dashboard';
+import Settings from '../Settings';
+import Content from '../Shared/Content';
+import AppNavbar from './AppNavbar';
 
 const AppLayout = styled.div`
   min-height: 100vh;
@@ -16,7 +16,7 @@ const AppLayout = styled.div`
       color: ${theme.color4};
       ${theme.backgroundColor};
     `}
-`
+`;
 
 class App extends Component {
   render() {
@@ -36,11 +36,11 @@ class App extends Component {
                 </SettingsContextProvider>
               </AppContextProvider>
             </AppLayout>
-          )
+          );
         }}
       </ThemeContext.Consumer>
-    )
+    );
   }
 }
 
-export default App
+export default App;

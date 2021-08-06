@@ -1,17 +1,17 @@
-import { ReactComponent as Loading } from 'assets/hearts.svg'
-import { AppContext } from 'context/AppContext'
-import { ThemeContext } from 'context/ThemeContext'
-import Highcharts from 'highcharts'
-import HighchartsReact from 'highcharts-react-official'
-import React, { Component } from 'react'
-import { withTranslation } from 'react-i18next'
-import styled from 'styled-components'
-import { Tile } from '../Shared/Tile'
-import ChartSelect from './ChartSelect'
-import HighchartsOptions from './HighchartsOptions'
-import HighchartsTheme from './HighchartsTheme'
+import { ReactComponent as Loading } from 'assets/hearts.svg';
+import { AppContext } from 'context/AppContext';
+import { ThemeContext } from 'context/ThemeContext';
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
+import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import { Tile } from '../Shared/Tile';
+import ChartSelect from './ChartSelect';
+import HighchartsOptions from './HighchartsOptions';
+import HighchartsTheme from './HighchartsTheme';
 
-Highcharts.setOptions(HighchartsTheme)
+Highcharts.setOptions(HighchartsTheme);
 
 const LoadingContainer = styled.div`
   left: 50%;
@@ -19,15 +19,15 @@ const LoadingContainer = styled.div`
   text-align: center;
   top: 50%;
   transform: translate3d(-50%, -50%, 0);
-`
+`;
 const LoadingText = styled.p`
   margin-bottom: 30px;
   margin-top: 0;
-`
+`;
 
 class PriceChart extends Component {
   render() {
-    const { t } = this.props
+    const { t } = this.props;
 
     return (
       <AppContext.Consumer>
@@ -62,8 +62,7 @@ class PriceChart extends Component {
                         {t('dashboard.historicalPrices')}
                       </LoadingText>
                       <Loading
-                        style={{ transform: 'scale(1.6)',
-            fill: theme.color4 }}
+                        style={{ transform: 'scale(1.6)', fill: theme.color4 }}
                       />
                     </LoadingContainer>
                   ) : (
@@ -73,13 +72,13 @@ class PriceChart extends Component {
                     />
                   )}
                 </Tile>
-              )
+              );
             }}
           </ThemeContext.Consumer>
         )}
       </AppContext.Consumer>
-    )
+    );
   }
 }
 
-export default withTranslation()(PriceChart)
+export default withTranslation()(PriceChart);

@@ -1,5 +1,5 @@
-import { textAlignLeft } from '../Shared/Styles'
-import styled, { css } from 'styled-components'
+import { textAlignLeft } from '../Shared/Styles';
+import styled, { css } from 'styled-components';
 
 const AppMenu = styled.ul`
   background-color: white;
@@ -32,6 +32,6 @@ const AppMenu = styled.ul`
       top: 30px;
       z-index: 1000;
     `}
-`
+`;
 
-export default AppMenu
+export default AppMenu;

@@ -1,16 +1,16 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 function useMenu() {
-  const [languageVisible, setLanguageVisible] = useState(false)
-  const [themeVisible, setThemeVisible] = useState(false)
+  const [languageVisible, setLanguageVisible] = useState(false);
+  const [themeVisible, setThemeVisible] = useState(false);
 
   const showMenuVisible = handler => {
-    handler(true)
-  }
+    handler(true);
+  };
 
   const hideMenuVisible = handler => {
-    handler(false)
-  }
+    handler(false);
+  };
 
   return {
     languageVisible,
@@ -21,7 +21,7 @@ function useMenu() {
 
     showMenuVisible,
     hideMenuVisible
-  }
+  };
 }
 
-export default useMenu
+export default useMenu;
