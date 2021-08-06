@@ -1,4 +1,4 @@
-export default function (historical, t) {
+const HighchartsOptions = (historical, t) => {
   return {
     title: {
       text: t('dashboard.chart.title')
@@ -48,4 +48,6 @@ export default function (historical, t) {
       ]
     }
   };
-}
+};
+
+export default HighchartsOptions;

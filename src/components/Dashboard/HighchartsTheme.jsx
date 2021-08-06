@@ -1,4 +1,4 @@
-export default {
+const HighchartsTheme = {
   colors: ['#61d936'],
 
   chart: {
@@ -252,3 +252,5 @@ export default {
     trackBorderColor: '#666'
   }
 };
+
+export default HighchartsTheme;
